@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--clr-second-bg);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: var(--bsh-primary);
+}
+
+.block > * + * {
+  margin-top: 0.5rem;
+}

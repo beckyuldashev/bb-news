@@ -1,0 +1,40 @@
+.item {
+  display: flex;
+  border-radius: .5rem;
+  box-shadow: var(--bsh-primary);
+  overflow: hidden;
+}
+
+.image {
+  width: 80px;
+  min-height: 80px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.info {
+  padding: .5rem 1rem;
+}
+
+.info > * + * {
+  margin-top: .5rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.extra {
+  font-size: .75rem;
+  color: var(--clr-subtext);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

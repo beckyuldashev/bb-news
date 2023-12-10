@@ -1,0 +1,37 @@
+.list.list {
+  display: flex;
+  column-gap: .5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.btn {
+  padding: .25em .5em;
+  border: 0;
+  border-radius: .5rem;
+  background-color: var(--clr-headline);
+  color: var(--clr-second-bg);
+  cursor: pointer;
+  text-align: center;
+  transition: .3s ease;
+}
+
+.btn:hover {
+  background-color: var(--clr-active);
+  color: var(--clr-headline);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background-color: var(--clr-headline);
+  color: var(--clr-second-bg);
+}
+
+.active {
+  background-color: var(--clr-active);
+  color: var(--clr-headline);
+}

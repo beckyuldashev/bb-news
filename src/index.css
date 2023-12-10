@@ -91,6 +91,21 @@ textarea:not([rows]) {
 
 
 /* ========== BASE ========== */
+::-webkit-scrollbar {
+  height: 10px; 
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-headline);
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-active);
+  border-radius: 1rem;  
+}
+
 body {
   font-family: var(--font-primary);
   color: var(--clr-text);

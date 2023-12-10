@@ -9,6 +9,7 @@
   width: 80px;
   min-height: 80px;
   flex-shrink: 0;
+  background-color: var(--clr-not-found);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

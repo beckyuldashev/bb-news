@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  column-gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: .5rem;
+  background-color: var(--clr-headline);
+  color: var(--clr-second-bg);
+  cursor: pointer;
+  text-align: center;
+  transition: .3s ease;
+}
+
+.btn:hover {
+  background-color: var(--clr-active);
+  color: var(--clr-headline);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background-color: var(--clr-headline);
+  color: var(--clr-second-bg);
+}
+
+.btn:where(:first-of-type, :last-of-type) {
+  flex-shrink: 0;
+}
+
+.active {
+  background-color: var(--clr-active);
+  color: var(--clr-headline);
+}

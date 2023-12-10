@@ -16,6 +16,8 @@
 }
 
 .info {
+  flex: 1;
+  background-color: var(--clr-second-bg);
   padding: .5rem 1rem;
 }
 

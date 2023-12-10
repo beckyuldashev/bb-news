@@ -1,0 +1,31 @@
+.banner {
+  min-height: 345px;
+  border-radius: 1rem;
+  box-shadow: var(--bsh-primary);
+}
+
+.item {
+  height: 80px;
+  border-radius: .5rem;
+  box-shadow: var(--bsh-primary);
+}
+
+.item + .item {
+  margin-top: 1.5rem;
+}
+
+.banner, .item {
+  background: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 600px;
+  animation: pulse 1.6s infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: -100px
+  }
+  
+  40%, 100% {
+    background-position: 140px
+  }
+}

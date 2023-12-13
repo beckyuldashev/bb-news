@@ -1,12 +1,12 @@
 import cl from "./Pagination.module.css";
 
-const Pagination = ({ currentPage, totalPages, isLoading, setCurrentPage }) => {
+const Pagination = ({ currentPage, totalPages, isLoading, changeFilter }) => {
   return (
     <div className={cl.pagination}>
       <button
         disabled={currentPage === 1 || isLoading}
         className={cl.btn}
-        onClick={() => setCurrentPage((prev) => prev - 1)}
+        onClick={() => changeFilter("page_number", currentPage - 1)}
       >
         {"<"}
       </button>
@@ -15,7 +15,7 @@ const Pagination = ({ currentPage, totalPages, isLoading, setCurrentPage }) => {
           <li key={index}>
             <button
               disabled={isLoading}
-              onClick={() => setCurrentPage(index + 1)}
+              onClick={() => changeFilter("page_number", index + 1)}
               className={
                 currentPage === index + 1 ? cl.btn + " " + cl.active : cl.btn
               }
@@ -28,7 +28,7 @@ const Pagination = ({ currentPage, totalPages, isLoading, setCurrentPage }) => {
       <button
         disabled={currentPage === totalPages || isLoading}
         className={cl.btn}
-        onClick={() => setCurrentPage((prev) => prev + 1)}
+        onClick={() => changeFilter("page_number", currentPage + 1)}
       >
         {">"}
       </button>

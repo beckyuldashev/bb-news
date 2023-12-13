@@ -1,6 +1,6 @@
 import cl from "./Search.module.css";
 
-const Search = ({ keywords, setKeywords }) => {
+const Search = ({ keywords, changeFilter }) => {
   return (
     <div className={cl.search}>
       <input
@@ -8,7 +8,7 @@ const Search = ({ keywords, setKeywords }) => {
         placeholder="Search..."
         className={cl.input}
         value={keywords}
-        onChange={(e) => setKeywords(e.target.value)}
+        onChange={(e) => changeFilter("keywords", e.target.value)}
       />
     </div>
   );

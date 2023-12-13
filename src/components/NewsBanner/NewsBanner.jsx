@@ -1,13 +1,14 @@
 import Image from "../Image/Image";
 
 import { formatTimeAgo } from "../../helpers/date/formatTimeAgo";
+import withSkeleton from "../../helpers/HOC/withSkeleton";
 
 import cl from "./NewsBanner.module.css";
 
 const NewsBanner = ({ newsItem }) => {
   return (
     <div className={cl.banner}>
-      <Image image={newsItem.image} />
+      <Image image={newsItem?.image} />
       <div className={cl.info}>
         <h3 className={cl.title}>{newsItem.title}</h3>
         <p className={cl.extra}>
@@ -18,4 +19,4 @@ const NewsBanner = ({ newsItem }) => {
   );
 };
 
-export default NewsBanner;
+export default withSkeleton(NewsBanner, "banner", 1);

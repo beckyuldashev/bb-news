@@ -1,24 +1,36 @@
+import withSkeleton from "../../helpers/HOC/withSkeleton";
 import cl from "./Categories.module.css";
 
 const Categories = ({
   categories,
   selectedCategory,
-  isLoading,
-  setSelectedCategory,
+  newsIsLoading,
+  changeFilter,
 }) => {
   return (
     <div className={cl.categories}>
       <ul className={cl.list} role="list">
+        <li className={cl.item}>
+          <button
+            disabled={newsIsLoading}
+            className={
+              selectedCategory === "all" ? cl.btn + " " + cl.active : cl.btn
+            }
+            onClick={() => changeFilter("category", null)}
+          >
+            all
+          </button>
+        </li>
         {categories.map((category) => (
           <li key={category} className={cl.item}>
             <button
-              disabled={isLoading}
+              disabled={newsIsLoading}
               className={
                 category === selectedCategory
                   ? cl.btn + " " + cl.active
                   : cl.btn
               }
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => changeFilter("category", category)}
             >
               {category}
             </button>
@@ -29,4 +41,4 @@ const Categories = ({
   );
 };
 
-export default Categories;
+export default withSkeleton(Categories, "item", 1);

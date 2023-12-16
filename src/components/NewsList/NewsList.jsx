@@ -1,5 +1,5 @@
-import withSkeleton from "../../helpers/HOC/withSkeleton";
 import NewsItem from "../NewsItem/NewsItem";
+import withSkeleton from "../../helpers/HOC/withSkeleton";
 
 import cl from "./NewsList.module.css";
 
@@ -15,4 +15,4 @@ const NewsList = ({ news }) => {
   );
 };
 
-export default withSkeleton(NewsList, "item", 6);
+export default withSkeleton(NewsList, "item", 6, "row");

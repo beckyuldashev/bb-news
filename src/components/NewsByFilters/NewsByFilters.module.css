@@ -1,0 +1,7 @@
+.section {
+  overflow: hidden; 
+}
+
+.section.section > * + * {
+  margin-top: 2rem;
+}

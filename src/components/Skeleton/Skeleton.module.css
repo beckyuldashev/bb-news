@@ -1,23 +1,30 @@
+.colList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.rowList > * + * {
+  margin-top: 1rem;
+}
+
 .banner {
-  min-height: 345px;
+  min-height: 250px;
   border-radius: 1rem;
   box-shadow: var(--bsh-primary);
 }
 
 .item {
   height: 80px;
-  border-radius: .5rem;
+  border-radius: 1rem;
   box-shadow: var(--bsh-primary);
 }
 
-.item + .item {
-  margin-top: 1.5rem;
-}
 
 .banner, .item {
   background: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
   background-size: 600px;
-  animation: pulse 1.6s infinite linear;
+  animation: pulse 1.2s infinite linear;
 }
 
 @keyframes pulse {
@@ -26,6 +33,6 @@
   }
   
   40%, 100% {
-    background-position: 140px
+    background-position: 400px
   }
 }

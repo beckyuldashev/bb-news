@@ -1,14 +1,11 @@
-import NewsBanner from "../../components/NewsBanner/NewsBanner";
-import NewsList from "../../components/NewsList/NewsList";
-import Pagination from "../../components/Pagination/Pagination";
-import Categories from "../../components/Categories/Categories";
-import Search from "../../components/Search/Search";
+import LatestNews from "../../components/LatestNews/LatestNews";
+import NewsByFilters from "../../components/NewsByFilters/NewsByFilters";
 
-import { getCategories, getNews } from "../../api/apiNews";
+import { getNews } from "../../api/apiNews";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { useFetch } from "../../helpers/hooks/useFetch";
 import { useFilters } from "../../helpers/hooks/useFilters";
-import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
+import { PAGE_SIZE } from "../../constants/constants";
 
 import cl from "./Home.module.css";
 
@@ -29,39 +26,18 @@ const Home = () => {
     keywords: debouncedValue,
   });
 
-  const [categoriesData, isCategoriesLoading] = useFetch(getCategories);
-
   return (
     <div className={cl.home}>
-      <Categories
-        categories={categoriesData.categories}
-        selectedCategory={filters.category}
-        changeFilter={changeFilter}
-        newsIsLoading={isNewsLoading}
-        isLoading={isCategoriesLoading}
+      <LatestNews
+        banners={newsData && newsData.news}
+        isNewsLoading={isNewsLoading}
       />
 
-      <Search keywords={filters.keywords} changeFilter={changeFilter} />
-
-      <NewsBanner
-        newsItem={newsData && newsData.news && newsData.news[0]}
-        isLoading={isNewsLoading}
-      />
-
-      <Pagination
-        currentPage={filters.page_number}
-        totalPages={TOTAL_PAGES}
+      <NewsByFilters
+        news={newsData && newsData.news}
+        filters={filters}
         changeFilter={changeFilter}
-        isLoading={isNewsLoading}
-      />
-
-      <NewsList news={newsData && newsData.news} isLoading={isNewsLoading} />
-
-      <Pagination
-        currentPage={filters.page_number}
-        totalPages={TOTAL_PAGES}
-        changeFilter={changeFilter}
-        isLoading={isNewsLoading}
+        isNewsLoading={isNewsLoading}
       />
     </div>
   );

@@ -1,8 +1,14 @@
-.list.list {
+.categories {
+  overflow-x: auto;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.list {
   display: flex;
   column-gap: .5rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
 }
 
 .btn {

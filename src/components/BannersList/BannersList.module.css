@@ -2,10 +2,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  max-height: 1200px;
-  overflow-y: auto;
 }
 
 .banners > li > div {
   height: 100%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .banners.banners {
+    max-height: 1200px;
+    overflow-y: auto;
+    padding-right: .5rem;
+  }
 }

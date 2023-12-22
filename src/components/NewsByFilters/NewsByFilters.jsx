@@ -30,7 +30,8 @@ const NewsByFilters = () => {
   return (
     <section className={cl.section}>
       <Filters
-        filters={filters}
+        selectedCategory={filters.category}
+        keywords={filters.keywords}
         changeFilter={changeFilter}
         isNewsLoading={isLoading}
       />

@@ -1,25 +1,38 @@
 import Categories from "../Categories/Categories";
 import Search from "../Search/Search";
+import Slider from "../Slider/Slider";
+import Skeleton from "../Skeleton/Skeleton";
 
 import { useFetch } from "../../helpers/hooks/useFetch";
 import { getCategories } from "../../api/apiNews";
 
 import cl from "./Filters.module.css";
 
-const Filters = ({ filters, changeFilter, isNewsLoading }) => {
-  const [categoriesData, isCategoriesLoading] = useFetch(getCategories);
+const Filters = ({
+  selectedCategory,
+  keywords,
+  changeFilter,
+  isNewsLoading,
+}) => {
+  const [data, isLoading] = useFetch(getCategories);
 
   return (
     <div className={cl.filters}>
-      <Categories
-        categories={categoriesData.categories}
-        selectedCategory={filters.category}
-        changeFilter={changeFilter}
-        newsIsLoading={isNewsLoading}
-        isLoading={isCategoriesLoading}
-      />
+      {data.categories ? (
+        <Slider>
+          <Categories
+            categories={data.categories}
+            selectedCategory={selectedCategory}
+            changeFilter={changeFilter}
+            newsIsLoading={isNewsLoading}
+            isLoading={isLoading}
+          />
+        </Slider>
+      ) : (
+        <Skeleton count={1} type="item" direction="row" />
+      )}
 
-      <Search keywords={filters.keywords} changeFilter={changeFilter} />
+      <Search keywords={keywords} changeFilter={changeFilter} />
     </div>
   );
 };

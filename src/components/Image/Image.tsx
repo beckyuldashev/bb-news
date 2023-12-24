@@ -1,6 +1,10 @@
 import cl from "./Image.module.css";
 
-const Image = ({ image }) => {
+interface ImageProps {
+  image: string;
+}
+
+const Image = ({ image }: ImageProps) => {
   return (
     <div className={cl.wrapper}>
       {image ? <img className={cl.image} src={image} alt="news" /> : null}

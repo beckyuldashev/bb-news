@@ -3,8 +3,13 @@ import Image from "../Image/Image";
 import { formatTimeAgo } from "../../helpers/date/formatTimeAgo";
 
 import cl from "./NewsBanner.module.css";
+import { INews } from "../../interfaces";
 
-const NewsBanner = ({ newsItem }) => {
+interface NewsBannerProps {
+  newsItem: INews;
+}
+
+const NewsBanner = ({ newsItem }: NewsBannerProps) => {
   return (
     <div className={cl.banner}>
       <Image image={newsItem?.image} />

@@ -9,20 +9,20 @@ import { getNews } from "../../api/apiNews";
 import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
 
 import cl from "./NewsByFilters.module.css";
+import { NewsApiResponse, ParamsType } from "../../interfaces";
 
 const NewsByFilters = () => {
-  const [filters, changeFilter] = useFilters({
+  const { filters, changeFilter } = useFilters({
     page_number: 1,
     page_size: PAGE_SIZE,
     category: "all",
     keywords: "",
   });
 
-  const { debouncedValue } = useDebounce(filters.keywords, 1000);
+  const debouncedValue = useDebounce(filters.keywords, 1000);
 
-  const [data, isLoading] = useFetch(getNews, {
-    page_number: filters.page_number,
-    page_size: filters.page_size,
+  const { data, isLoading } = useFetch<NewsApiResponse, ParamsType>(getNews, {
+    ...filters,
     category: filters.category === "all" ? null : filters.category,
     keywords: debouncedValue,
   });

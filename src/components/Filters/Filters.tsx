@@ -7,21 +7,34 @@ import { useFetch } from "../../helpers/hooks/useFetch";
 import { getCategories } from "../../api/apiNews";
 
 import cl from "./Filters.module.css";
+import { CategoriesApiResponse, CategoriesType } from "../../interfaces";
+
+interface FiltersProps {
+  selectedCategory: CategoriesType | null;
+  keywords: string | number | readonly string[] | undefined;
+  changeFilter: (
+    prop: string,
+    value: string | number | readonly string[] | undefined
+  ) => void;
+  isNewsLoading: boolean;
+}
 
 const Filters = ({
   selectedCategory,
   keywords,
   changeFilter,
   isNewsLoading,
-}) => {
-  const [data, isLoading] = useFetch(getCategories);
+}: FiltersProps) => {
+  const { data, isLoading } = useFetch<CategoriesApiResponse, null>(
+    getCategories
+  );
 
   return (
     <div className={cl.filters}>
-      {data.categories ? (
+      {data?.categories ? (
         <Slider>
           <Categories
-            categories={data.categories}
+            categories={data?.categories}
             selectedCategory={selectedCategory}
             changeFilter={changeFilter}
             newsIsLoading={isNewsLoading}

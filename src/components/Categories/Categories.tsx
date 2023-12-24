@@ -1,8 +1,29 @@
-import { forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import cl from "./Categories.module.css";
 
+import { CategoriesType } from "../../interfaces/index";
+
+interface CategoriesProps {
+  categories: CategoriesType[];
+  selectedCategory: CategoriesType | null;
+  changeFilter: (
+    prop: string,
+    value: string | number | readonly string[] | undefined
+  ) => void;
+  newsIsLoading: boolean;
+  isLoading: boolean;
+}
+
 const Categories = forwardRef(
-  ({ categories, selectedCategory, newsIsLoading, changeFilter }, ref) => {
+  (
+    {
+      categories,
+      selectedCategory,
+      newsIsLoading,
+      changeFilter,
+    }: CategoriesProps,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
     return (
       <div ref={ref} className={cl.categories}>
         <ul className={cl.list} role="list">
@@ -12,7 +33,7 @@ const Categories = forwardRef(
               className={
                 selectedCategory === "all" ? cl.btn + " " + cl.active : cl.btn
               }
-              onClick={() => changeFilter("category", null)}
+              onClick={() => changeFilter("category", "")}
             >
               all
             </button>

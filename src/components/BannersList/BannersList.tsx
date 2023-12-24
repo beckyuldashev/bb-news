@@ -3,8 +3,13 @@ import NewsBanner from "../NewsBanner/NewsBanner";
 import withSkeleton from "../../helpers/HOC/withSkeleton";
 
 import cl from "./BannersList.module.css";
+import { INews } from "../../interfaces";
 
-const BannersList = ({ banners }) => {
+interface BannersListProps {
+  banners?: INews[] | null;
+}
+
+const BannersList = ({ banners }: BannersListProps) => {
   return (
     <ul className={cl.banners} role="list">
       {banners?.map((banner) => (
@@ -16,4 +21,9 @@ const BannersList = ({ banners }) => {
   );
 };
 
-export default withSkeleton(BannersList, "banner", 10, "column");
+export default withSkeleton<BannersListProps>(
+  BannersList,
+  "banner",
+  10,
+  "column"
+);

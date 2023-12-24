@@ -1,6 +1,12 @@
+import { IPaginationProps } from "../../interfaces";
 import cl from "./Pagination.module.css";
 
-const Pagination = ({ currentPage, totalPages, isLoading, changeFilter }) => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  isLoading,
+  changeFilter,
+}: IPaginationProps) => {
   return (
     <div className={cl.pagination}>
       <button

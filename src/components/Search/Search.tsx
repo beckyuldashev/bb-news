@@ -1,6 +1,14 @@
 import cl from "./Search.module.css";
 
-const Search = ({ keywords, changeFilter }) => {
+interface SearchProps {
+  keywords: string | number | readonly string[] | undefined;
+  changeFilter: (
+    prop: string,
+    value: string | number | readonly string[] | undefined
+  ) => void;
+}
+
+const Search = ({ keywords, changeFilter }: SearchProps) => {
   return (
     <div className={cl.search}>
       <input

@@ -1,6 +1,17 @@
+import { DirectionType, SkeletonType } from "../../interfaces";
 import cl from "./Skeleton.module.css";
 
-const Skeleton = ({ count = 1, type = "banner", direction = "column" }) => {
+interface SkeletonProps {
+  count?: number;
+  type?: SkeletonType;
+  direction?: DirectionType;
+}
+
+const Skeleton = ({
+  count = 1,
+  type = "banner",
+  direction = "column",
+}: SkeletonProps) => {
   return count > 1 ? (
     <ul
       role="list"

@@ -1,12 +1,17 @@
 import NewsItem from "../NewsItem/NewsItem";
 import withSkeleton from "../../helpers/HOC/withSkeleton";
+import { INews } from "../../interfaces";
 
 import cl from "./NewsList.module.css";
 
-const NewsList = ({ news }) => {
+interface NewsListProps {
+  news?: INews[];
+}
+
+const NewsList = ({ news }: NewsListProps) => {
   return (
     <ul className={cl.list} role="list">
-      {news.map((item) => (
+      {news?.map((item) => (
         <li key={item.id} className={cl.item}>
           <NewsItem newsItem={item} />
         </li>
@@ -15,4 +20,4 @@ const NewsList = ({ news }) => {
   );
 };
 
-export default withSkeleton(NewsList, "item", 6, "row");
+export default withSkeleton<NewsListProps>(NewsList, "item", 6, "row");

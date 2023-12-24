@@ -1,8 +1,13 @@
 import { formatTimeAgo } from "../../helpers/date/formatTimeAgo";
+import { INews } from "../../interfaces";
 
 import cl from "./NewsItem.module.css";
 
-const NewsItem = ({ newsItem }) => {
+interface NewsItemProps {
+  newsItem: INews;
+}
+
+const NewsItem = ({ newsItem }: NewsItemProps) => {
   return (
     <div className={cl.item}>
       <div

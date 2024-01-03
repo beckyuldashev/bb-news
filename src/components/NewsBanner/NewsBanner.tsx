@@ -11,7 +11,7 @@ interface NewsBannerProps {
 
 const NewsBanner = ({ newsItem }: NewsBannerProps) => {
   return (
-    <div className={cl.banner}>
+    <div className={`${cl.banner} container`}>
       <Image image={newsItem?.image} />
       <div className={cl.info}>
         <h3 className={cl.title}>{newsItem?.title}</h3>

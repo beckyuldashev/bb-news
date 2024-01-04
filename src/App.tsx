@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 
-import { useTheme } from "./context/themeContext";
+import { useTheme } from "./context/ThemeContext";
 
 function App() {
   const { isDark } = useTheme();

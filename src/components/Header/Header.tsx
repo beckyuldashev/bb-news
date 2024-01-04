@@ -1,4 +1,4 @@
-import { useTheme } from "../../context/themeContext";
+import { useTheme } from "../../context/ThemeContext";
 import { formatDate } from "../../helpers/date/formatDate";
 
 import darkThemeIcon from "../../assets/theme/dark.png";

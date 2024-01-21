@@ -1,40 +1,37 @@
-import { ForwardedRef, forwardRef } from "react";
-import cl from "./Categories.module.css";
+import { ForwardedRef, forwardRef } from 'react';
 
-import { CategoriesType } from "../../interfaces/index";
+import { useAppDispatch } from '../../store';
+import { setFilters } from '../../store/slices/newsSlice';
+
+import { CategoriesType } from '../../interfaces/index';
+
+import cl from './Categories.module.css';
 
 interface CategoriesProps {
   categories: CategoriesType[];
   selectedCategory: CategoriesType | null;
-  changeFilter: (
-    prop: string,
-    value: string | number | readonly string[] | undefined
-  ) => void;
   newsIsLoading: boolean;
   isLoading: boolean;
 }
 
 const Categories = forwardRef(
   (
-    {
-      categories,
-      selectedCategory,
-      newsIsLoading,
-      changeFilter,
-    }: CategoriesProps,
-    ref: ForwardedRef<HTMLDivElement>
+    { categories, selectedCategory, newsIsLoading }: CategoriesProps,
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
+    const dispatch = useAppDispatch();
+    const changeFilter = (prop: string, value: string | number | readonly string[] | undefined) => {
+      dispatch(setFilters({ prop, value }));
+    };
+
     return (
       <div ref={ref} className={cl.categories}>
         <ul className={cl.list} role="list">
           <li className={cl.item}>
             <button
               disabled={newsIsLoading}
-              className={
-                selectedCategory === "all" ? cl.btn + " " + cl.active : cl.btn
-              }
-              onClick={() => changeFilter("category", "")}
-            >
+              className={selectedCategory === 'all' ? cl.btn + ' ' + cl.active : cl.btn}
+              onClick={() => changeFilter('category', 'all')}>
               all
             </button>
           </li>
@@ -42,13 +39,8 @@ const Categories = forwardRef(
             <li key={category} className={cl.item}>
               <button
                 disabled={newsIsLoading}
-                className={
-                  category === selectedCategory
-                    ? cl.btn + " " + cl.active
-                    : cl.btn
-                }
-                onClick={() => changeFilter("category", category)}
-              >
+                className={category === selectedCategory ? cl.btn + ' ' + cl.active : cl.btn}
+                onClick={() => changeFilter('category', category)}>
                 {category}
               </button>
             </li>
@@ -56,9 +48,9 @@ const Categories = forwardRef(
         </ul>
       </div>
     );
-  }
+  },
 );
 
-Categories.displayName = "Categories";
+Categories.displayName = 'Categories';
 
 export default Categories;

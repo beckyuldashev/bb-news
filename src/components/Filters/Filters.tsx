@@ -1,33 +1,21 @@
-import Categories from "../Categories/Categories";
-import Search from "../Search/Search";
-import Slider from "../Slider/Slider";
-import Skeleton from "../Skeleton/Skeleton";
+import Categories from '../Categories/Categories';
+import Search from '../Search/Search';
+import Slider from '../Slider/Slider';
+import Skeleton from '../Skeleton/Skeleton';
 
-import { useFetch } from "../../helpers/hooks/useFetch";
-import { getCategories } from "../../api/apiNews";
+import { useGetCategoriesQuery } from '../../store/services/newsApi';
+import { CategoriesType } from '../../interfaces';
 
-import cl from "./Filters.module.css";
-import { CategoriesApiResponse, CategoriesType } from "../../interfaces";
+import cl from './Filters.module.css';
 
 interface FiltersProps {
   selectedCategory: CategoriesType | null;
   keywords: string | number | readonly string[] | undefined;
-  changeFilter: (
-    prop: string,
-    value: string | number | readonly string[] | undefined
-  ) => void;
   isNewsLoading: boolean;
 }
 
-const Filters = ({
-  selectedCategory,
-  keywords,
-  changeFilter,
-  isNewsLoading,
-}: FiltersProps) => {
-  const { data, isLoading } = useFetch<CategoriesApiResponse, null>(
-    getCategories
-  );
+const Filters = ({ selectedCategory, keywords, isNewsLoading }: FiltersProps) => {
+  const { data, isLoading } = useGetCategoriesQuery(null);
 
   return (
     <div className={cl.filters}>
@@ -36,7 +24,6 @@ const Filters = ({
           <Categories
             categories={data?.categories}
             selectedCategory={selectedCategory}
-            changeFilter={changeFilter}
             newsIsLoading={isNewsLoading}
             isLoading={isLoading}
           />
@@ -45,7 +32,7 @@ const Filters = ({
         <Skeleton count={1} type="item" direction="row" />
       )}
 
-      <Search keywords={keywords} changeFilter={changeFilter} />
+      <Search keywords={keywords} />
     </div>
   );
 };

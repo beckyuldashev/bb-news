@@ -1,10 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import { useTheme } from './app/providers/ThemeProvider';
-import Home from './pages/home/ui/Page';
-import { Header } from './widgets/header/ui';
+import { Home } from '@/pages/home';
 
-function App() {
+import Header from '@/widgets/header/ui/Header/Header';
+import { useTheme } from '../providers/ThemeProvider';
+
+function BaseLayout() {
   const { isDark } = useTheme();
 
   return (
@@ -19,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default BaseLayout;
